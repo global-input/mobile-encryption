@@ -2,24 +2,18 @@ import styleMatchingScreenSize from "./styleMatchingScreenSize";
 export const styles = {
 
   pageContainer: {
-    paddingLeft: 20,
-    paddingTop: 50,
-    paddingRight: 20,
-    display: "flex",
+    display: "flex",  
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
     backgroundColor: "#5291CD",
-    width: "100%",
-    height: window.innerHeight,
+    width: "100%"    
   },
   pageContent: {
-    marginTop: 20,
-    marginBottom: 10,
     padding: 10,
     backgroundColor: "white",
-    width: "95%",
-    borderRadius: 25,
+    width: "100%",
+    
   },
 
   bodyContent: {
@@ -30,38 +24,12 @@ export const styles = {
     alignItems: "center",
     width: "100%",    
   },
-  contentContainer:{
-    left:{
-      get:styleMatchingScreenSize,
-      default:{      
-        display:"flex",
-        flexDirection:"column",
-        justifyContent:"flex-start",
-        alignItems:"flex-start",      
-        width:'100%',
-        padding:30,
-      }
-    },
-    center:{
-      get:styleMatchingScreenSize,
-      default:{      
-        display:"flex",
-        flexDirection:"column",
-        justifyContent:"flex-start",
-        alignItems:"center",      
-        width:'100%',
-        padding:30,
-      }
-    },
-
-         
-  },
-
   title: {
     display: "flex",
-    flexDirection: "row",    
+    flexDirection: "row",
+    width: "100%",
     justifyContent: "center",
-    fontSize: "2vw",
+    fontSize: 22,
     color: "#5291CD",
     marginBottom: "20",
     marginLeft: "4vw"
@@ -75,7 +43,7 @@ export const styles = {
     position: "relative"
   },
   barcodeContainer: {
-    
+    position: "absolute",
     top: 0,
     width: "100%",
     height: "100%",
@@ -112,6 +80,8 @@ export const styles = {
       marginBottom: 20,
       marginTop: 20,
       color: "#5291CD",
+      maxWidth:900
+      
     },
     mobile: {
       fontSize: 16,
@@ -177,7 +147,8 @@ export const styles = {
             get:()=>{
               return{
                 width:"100%",
-                minHeight:200
+                minHeight:200,
+                border:"1px solid #888888"
               }
             }
         
@@ -190,7 +161,40 @@ export const styles = {
             padding:10,
             minWidth:150,
          },
- }
+ },
+ canvas:{    
+    backgroundColor:"#FFFFFF",
+    borderRadius: 25,
+ },
+ contentContainer:{
+  left:{
+    get:styleMatchingScreenSize,
+    default:{      
+      display:"flex",
+      flexDirection:"column",
+      justifyContent:"flex-start",
+      alignItems:"flex-start",      
+      width:'100%',
+      padding:30,
+    }
+  },
+  center:{
+    get:styleMatchingScreenSize,
+    default:{      
+      display:"flex",
+      flexDirection:"column",
+      justifyContent:"flex-start",
+      alignItems:"center",      
+      width:'100%',
+      padding:30,
+    }
+  },
+
+       
+},
+
+ 
+ 
    
 };
 
