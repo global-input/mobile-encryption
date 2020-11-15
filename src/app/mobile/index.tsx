@@ -20,7 +20,7 @@ interface MobileInputData extends globalInput.GlobalInputData {
     sendFormFields: (title: string, fields: globalInput.FormField[]) => void;
     setOnFieldChange: (onFieldChange: (field: globalInput.FormField) => void) => void
 }
-export const useMobile = (title: string, fields: globalInput.FormField[] | (() => globalInput.FormField[]), domain?: string, formId?: string,): MobileInputData => {
+export const useMobile = (title: string, fields: globalInput.FormField[] | (() => globalInput.FormField[]), domain?: string, formId?: string,dataType?:string): MobileInputData => {
     const connectionSettings = storage.loadConnectionSettings();
     const options: globalInput.ConnectOptions = {
         url: connectionSettings.url,////use your own server"
@@ -39,6 +39,9 @@ export const useMobile = (title: string, fields: globalInput.FormField[] | (() =
         }
 
     };
+    if(dataType){
+        initData.dataType=dataType;
+    }
     if (formId) {
         initData.form.id = formId;
     }

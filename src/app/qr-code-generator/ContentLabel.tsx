@@ -14,7 +14,7 @@ const ContentLabel: React.FC<Props> = ({ back, next }) => {
         const [label, setLabel] = useState('');
         const [errorMessage, setErrorMessage] = useState('');
 
-        const mobile = useMobile("QR Code Content", Object.values(FIELDS));
+        const mobile = useMobile("QR Code Content", Object.values(FIELDS),'','',"qrcode");
         const onContentChange = (content: string) => {
                 setContent(content);
                 mobile.sendValue(FIELDS.content.id, content);
