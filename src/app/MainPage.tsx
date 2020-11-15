@@ -10,17 +10,9 @@ interface Props {
     editConnectionSettings: () => void;
     qrCodeGenerator: () => void;
 }
-const MainPage: React.FC<Props> = ({ domain, encryption, decryption, editConnectionSettings, qrCodeGenerator}) => {
-    const mobile = useMobile({
-        action: "input",
-        dataType: "form",
-        form: {
-            title: "Please Select",
-            fields: Object.values(FIELDS)
-        }
-    });
-
-    mobile.setOnchange(({ field }) => {
+const MainPage: React.FC<Props> = ({ domain, encryption, decryption, editConnectionSettings, qrCodeGenerator }) => {
+    const mobile = useMobile("Please Select", Object.values(FIELDS));
+    mobile.setOnFieldChange((field) => {
         switch (field.id) {
             case FIELDS.encryption.id:
                 encryption();
@@ -38,12 +30,12 @@ const MainPage: React.FC<Props> = ({ domain, encryption, decryption, editConnect
     const NotConnected = () => (
         <AppFooter>
             <MessageButton label="Settings" onClick={editConnectionSettings} />
-            <MessageLink href="https://github.com/global-input/browser-extension">Source Code</MessageLink>
+            <MessageLink href="https://github.com/global-input/mobile-encryption">Source Code</MessageLink>
         </AppFooter>
     )
 
     return (
-        <mobile.ControlledContainer title="Global Input App" domain={domain} notConnected={<NotConnected />}>
+        <mobile.ControlledContainer title="Mobile Encryption" domain={domain} notConnected={<NotConnected />}>
             <MessageContainer>
                 You can now operate on your mobile.
             </MessageContainer>
@@ -55,7 +47,7 @@ const MainPage: React.FC<Props> = ({ domain, encryption, decryption, editConnect
 
 const FIELDS = {
     qrCodeGenerator: {
-        id:'qr-code-generator',
+        id: 'qr-code-generator',
         type: "button",
         label: "Encrypted QR Code",
         icon: "qrcode",
