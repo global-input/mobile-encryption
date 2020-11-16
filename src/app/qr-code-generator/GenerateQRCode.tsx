@@ -8,9 +8,13 @@ import { P, A } from '../app-layout';
 const GenerateQRCode = ({ content, label, back }) => {
     const [size, setSize] = useState(300);
     const [level, setLevel] = useState('H');
-
-    const mobile = useMobile("QR Code Generated", Object.values(FIELDS));
-
+    const initData = {
+        form: {
+            title: "QR Code Generated",
+            fields: Object.values(FIELDS)
+        }
+    }
+    const mobile = useMobile(initData);
     mobile.setOnFieldChange((field) => {
         switch (field.id) {
             case FIELDS.size.id:
