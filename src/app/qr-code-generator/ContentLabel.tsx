@@ -61,7 +61,7 @@ const ContentLabel: React.FC<Props> = ({ back, next }) => {
                 <mobile.ControlledContainer title="QR Code Generator" domain="">
                         <FormContainer>
                                 <P>Please provide the content for the QR Code. </P>
-                                <P>You can encrypt an content using your mobile and send it to this application so you can generate an Encrypted QR Code</P>
+                                <P>You can encrypt content using your mobile and send the encrypted content to this application for generating an Encrypted QR Code with it</P>
                                 <InputWithLabel label="Content to decrypt" id="content"
                                         onChange={onContentChange}
                                         type="textarea"
