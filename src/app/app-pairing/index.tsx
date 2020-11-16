@@ -14,7 +14,6 @@ const AppPairing: React.FC<Props> = ({ back }) => {
         }
     }
     const mobile = useMobile(initData);
-
     mobile.setOnFieldChange((field) => {
         switch (field.id) {
             case FIELDS.back.id:
@@ -29,7 +28,10 @@ const AppPairing: React.FC<Props> = ({ back }) => {
             <MessageContainer>
                 You need to pair your mobile app in order to be able to connect to your extension.
                 </MessageContainer>
-            {mobile.pairing}
+
+
+            <mobile.PairingQR />
+
             <FormFooter>
                 <TextButton onClick={back} label='Done' />
             </FormFooter>
