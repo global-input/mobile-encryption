@@ -8,7 +8,7 @@ interface Props {
     pairing: () => void;
 }
 
-const ConnectionSettings: React.FC<Props> = ({ back, pairing }) => {
+export const ConnectionSettings: React.FC<Props> = ({ back, pairing }) => {
     const [setting, setSettings] = useState(() => loadConnectionSettings());
     const setURL = (url: string) => setSettings(setting => ({ ...setting, url }));
     const setAPIKey = (apikey: string) => setSettings(setting => ({ ...setting, apikey }));
@@ -157,8 +157,5 @@ const FIELDS = {
         type: 'button',
         label: 'Save',
         viewId: "row1"
-    },
-
-
+    }
 }
-export default ConnectionSettings;
