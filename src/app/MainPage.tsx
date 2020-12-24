@@ -3,7 +3,7 @@ import React from 'react';
 
 import { useMobile, ConnectWidget,DisConnectButton} from './mobile';
 
-import { Content,AppTitle, P } from './app-layout';
+import {Container, Content,AppTitle, P,SourceLink } from './app-layout';
 
 //+//import * as mobileUI from '../../micro-apps/mobile-ui'; ////website
 interface Props {
@@ -33,13 +33,12 @@ const MainPage: React.FC<Props> = ({ domain, encryption, decryption, qrCodeGener
         }
     });
 
-    const disconnect = () => {
-        mobile.restart();
 
-    }
     return (
+        <Container>
         <Content>
             <AppTitle>Mobile Encryption</AppTitle>
+            <SourceLink>Source Code</SourceLink>
             <ConnectWidget mobile={mobile}/>
             {mobile.isConnected && (
                 <P>
@@ -47,8 +46,8 @@ const MainPage: React.FC<Props> = ({ domain, encryption, decryption, qrCodeGener
                 </P>
             )}
             <DisConnectButton mobile={mobile}/>
-
         </Content>
+        </Container>
     );
 }
 

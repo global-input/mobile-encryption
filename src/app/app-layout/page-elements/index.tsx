@@ -1,6 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
+export const Container =styled.div`
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    width:100vw;
+    height:100vh;
+`;
 
 export const Content=styled.div`
     width:95%;
@@ -12,7 +20,6 @@ export const Content=styled.div`
     align-items: center;
     padding:10px;
 
-    border:1px solid red;
 `;
 export const AppTitle=styled.div`
     width: 100%;
@@ -30,10 +37,30 @@ export const AppTitle=styled.div`
         font-size:2em;
     }
 },`;
+export const SourceLink=styled.a.attrs({
+    href:'https://github.com/global-input/mobile-encryption',
+    rel:'noreferrer noopener',
+    target:'_blank'})`
+    color: #153E85;
+    font-weight: 100;
+    font-family: Georgia, Times, Serif;
+    font-size: 0.8em;
+    @media screen and (min-width:300px){
+        font-size:1em;
+    }
+    @media screen and (min-width:400px){
+        font-size:1.5em;
+    }
+
+    `;
+
 
 export const P = styled.div`
     font-size: 16px;
 `;
+
+
+
 
 
 export const AppContainer: React.FC<AppContainerProps> = ({ children, domain, title }) => (
