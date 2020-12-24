@@ -1,18 +1,18 @@
 
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
-
-import { AppContainer, InputWithLabel, P, FormContainer, FormFooter, TextButton, DisplayErrorMessage } from '../app-layout';
-import { useMobile,ConnectWidget } from '../mobile';
-
+import { InputWithLabel, FormContainer, FormFooter, TextButton, DisplayErrorMessage } from '../app-layout';
+import { useMobile,ConnectWidget} from '../mobile';
+import importEncryptOnMobileImage from './images/encrypt-on-mobile.png';
 interface Props {
         back: () => void;
         next: (content: string, label: string) => void;
 }
-const ContentLabel: React.FC<Props> = ({ back, next }) => {
+export const ContentLabel: React.FC<Props> = ({ back, next }) => {
         const [content, setContent] = useState('');
         const [label, setLabel] = useState('');
-        const [errorMessage, setErrorMessage] = useState('');
+
         const initData = {
                 dataType: "qrcode",
                 form: {
@@ -33,10 +33,6 @@ const ContentLabel: React.FC<Props> = ({ back, next }) => {
                 if (content.trim().length) {
                         next(content, label);
                 }
-                else {
-                        setErrorMessage("Content is empty!");
-                }
-
         }
         mobile.setOnchange(({ field }) => {
                 switch (field.id) {
@@ -58,12 +54,15 @@ const ContentLabel: React.FC<Props> = ({ back, next }) => {
                 }
         });
         return (
-                <AppContainer title="QR Code Generator" domain="">
-                        <ConnectWidget mobile={mobile}/>
-                        <FormContainer>
-                                {mobile.isConnected && (<>
-                                        <P>Please provide the content for the QR Code. </P>
-                                        <P>You can encrypt content using your mobile and send the encrypted content to this application for generating an Encrypted QR Code with it</P>
+                <Container>
+                <AppTitle>Mobile Encryption</AppTitle>
+                <SourceLink>Source Code</SourceLink>
+                <Content>
+                <Title>Encrypt a content on your mobile</Title>
+                <ConnectWidget mobile={mobile}/>
+                {mobile.isConnected && (<>
+                <P>You can now press <EncryptOnMobileIcon/> button on your mobile to encrypt a piece of information. The mobile app sends
+                the encrypted content generated on your mobile to this application, which displays the received content in the following text box.</P>
                                         <InputWithLabel label="Content to decrypt" id="content"
                                                 onChange={onContentChange}
                                                 type="textarea"
@@ -71,14 +70,18 @@ const ContentLabel: React.FC<Props> = ({ back, next }) => {
 
                                         <InputWithLabel id="label" value={label} label="Label" type="text" onChange={onLabelChanged} />
                                 </>)}
-                                {errorMessage && (<DisplayErrorMessage errorMessage={errorMessage} />)}
-                        </FormContainer>
                         <FormFooter>
                                 <TextButton onClick={back} label='Back' />
                                 {mobile.isConnected && (<TextButton onClick={onNext} label='Next' />)}
                         </FormFooter>
+                </Content>
 
-                </AppContainer>
+
+
+
+
+                </Container>
+
 
         );
 };
@@ -116,6 +119,81 @@ const FIELDS = {
 };
 
 
+const Container =styled.div`
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    width:100vw;
+    height:100vh;
+    backgroundColor: rgb(219,240,240);
+`;
 
 
-export default ContentLabel;
+const P = styled.div`
+    font-size: 16px;
+`;
+
+
+const AppTitle=styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    font-size: 1em;
+    color: #445566;
+    font-family: Georgia, Times, Serif;
+    @media screen and (min-width:250px) and (min-height:250px){
+        font-size:1.5em;
+        margin-bottom:10px;
+    }
+
+    @media screen and (min-width:400px){
+        font-size:2em;
+    }
+},`;
+const Title=styled.div`
+    color: #445566;
+    font-family: Georgia, Times, Serif;
+    font-size: 1em;
+    @media screen and (min-width:250px) and (min-height:250px){
+        font-size:1.4em;
+    }
+    @media screen and (min-width:400px){
+            font-size:1.3em;
+     }
+`;
+
+const SourceLink=styled.a.attrs({
+        href:'https://github.com/global-input/mobile-encryption',
+        rel:'noreferrer noopener',
+        target:'_blank'})`
+        color: #153E85;
+        font-weight: 100;
+        font-family: Georgia, Times, Serif;
+        font-size: 0.8em;
+        @media screen and (min-width:250px) and (min-height:250px){
+            font-size:1em;
+            margin-bottom:10px;
+        }
+        @media screen and (min-width:400px){
+            font-size:1.5em;
+        }
+
+        `;
+
+const Content=styled.div`
+    width:95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items:flex-start
+    align-items: center;
+    padding:10px;
+`;
+
+const EncryptOnMobileIcon=styled.img.attrs({
+    src:importEncryptOnMobileImage,
+    alt:'Encrypt'
+})``;
