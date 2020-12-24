@@ -3,15 +3,16 @@ import styled from 'styled-components';
 
 
 export const Content=styled.div`
-    min-height: 100px;
+    width:95%;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     backgroundColor: rgb(219,240,240);
     align-items: center;
-    @media only screen and (min-height:650px){
-        margin:30px;
-    }
+    padding:10px;
+
+    border:1px solid red;
 `;
 export const AppTitle=styled.div`
     width: 100%;
@@ -30,6 +31,10 @@ export const AppTitle=styled.div`
     }
 },`;
 
+export const P = styled.div`
+    font-size: 16px;
+`;
+
 
 export const AppContainer: React.FC<AppContainerProps> = ({ children, domain, title }) => (
     <Content>
@@ -44,7 +49,7 @@ export const AppContainer: React.FC<AppContainerProps> = ({ children, domain, ti
 
 
 
-export const P = ({ children }) => (<div style={styles.paragraph}>{children}</div>);
+
 
 export const Title: React.FC = ({ children }) => (
     <div style={styles.title}>{children}</div>
@@ -178,15 +183,7 @@ const styles = {
         padding: 10,
         color: "#153E85"
     },
-    paragraph: {
-        fontSize: 16,
-        display: "block",
-        marginBottom: 20,
-        marginTop: 20,
-        color: "#5291CD",
-        maxWidth: 900
 
-    },
     link: {
         fontWeight: 50,
         color: "#6666ff"

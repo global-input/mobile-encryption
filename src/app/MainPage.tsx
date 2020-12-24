@@ -3,7 +3,7 @@ import React from 'react';
 
 import { useMobile, ConnectWidget,DisConnectButton} from './mobile';
 
-import { Content,AppTitle, MessageContainer } from './app-layout';
+import { Content,AppTitle, P } from './app-layout';
 
 //+//import * as mobileUI from '../../micro-apps/mobile-ui'; ////website
 interface Props {
@@ -42,9 +42,9 @@ const MainPage: React.FC<Props> = ({ domain, encryption, decryption, qrCodeGener
             <AppTitle>Mobile Encryption</AppTitle>
             <ConnectWidget mobile={mobile}/>
             {mobile.isConnected && (
-                <MessageContainer>
+                <P>
                     You can now operate on your mobile.
-                </MessageContainer>
+                </P>
             )}
             <DisConnectButton mobile={mobile}/>
 
