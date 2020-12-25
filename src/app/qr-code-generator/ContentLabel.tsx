@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 
-import { useMobile,ConnectWidget} from '../mobile';
+import { useMobile,ConnectWidget, WhenConnected} from '../mobile';
 import encryptOnMobileImage from './images/encrypt-on-mobile.png';
 import keysOnMobileImage from './images/keys-on-mobile.png';
 import settingsOnMobileImage from './images/settings-on-mobile.png';
@@ -69,18 +69,23 @@ export const ContentLabel: React.FC<Props> = ({ back, next }) => {
                 <Content>
                         <Title>Encrypting Content for QR Code</Title>
                         <ConnectWidget mobile={mobile}/>
-                        {mobile.isConnected &&(
-                        <ConnectedInstruction>
-                                You can now press <EncryptOnMobileIcon/> button on your mobile to encrypt a piece of information.
-                        </ConnectedInstruction>)}
+                        <WhenConnected mobile={mobile}>
+                                <ConnectedInstruction>
+                                        You can now press <EncryptOnMobileIcon/> button on your mobile to encrypt a piece of information.
+                                </ConnectedInstruction>
+
+                        </WhenConnected>
+
+
                         <Form>
 
-                                {mobile.isConnected &&(<>
-                                <ContentLabelForm content={content} label={label} onContentChanged={onContentChanged} onLabelChanged={onLabelChanged}/>
+                                <WhenConnected mobile={mobile}>
+                                        <ContentLabelForm content={content} label={label} onContentChanged={onContentChanged} onLabelChanged={onLabelChanged}/>
                                         <MoreInfo>The mobile app sends
                                         the encrypted content generated on your mobile to this application, which displays the received content in the text box above.
                                         </MoreInfo>
-                                </>)}
+
+                                </WhenConnected>
                                 <Footer>
                                         <DarkButton onClick={back}>Back</DarkButton>
                                         {mobile.isConnected && (<DarkButton onClick={onNext}>Next</DarkButton>)}

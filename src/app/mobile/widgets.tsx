@@ -55,6 +55,7 @@ const DarkButton = styled(BigButton)`
 `;
 
 const Container = styled.div`
+
         flex-direction: column;
         justify-content: flex-center;
         align-items: flex-start;
@@ -85,8 +86,9 @@ const TopBar = styled.div`
         justify-content: space-between;
         width: 100%;
         align-items: flex-end;
-        min-height:70px;
+
         background-color:rgb(74, 93, 126);
+
 `;
 const Content = styled.div`
         flex-direction: column;
@@ -97,20 +99,27 @@ const Content = styled.div`
         display: flex;
         width:100%;
         overflow:scroll;
+        background-color:white;
 `;
 const PopupGlass = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 100vw;
-        height:100vh;
+
+
         margin: 0;
         padding: 0;
         position: fixed;
         top:0;
         left:0;
         z-index:10;
+        @media screen and (min-height:530px){
+                height:100vh;
+        }
+
+        width: 100vw;
+
 `;
 
  const ErrorMessage = styled.div`
@@ -127,9 +136,9 @@ const PopupGlass = styled.div`
 const PopUpWindow=styled.div`
     display:flex;
     flex-direction:column;
-    justify-content:flex-start;
-    align-items:center;
+    justify-content:center;
     position:relative;
+
 `;
 export const CloseIcon=styled.button`
     position:absolute;
@@ -147,24 +156,16 @@ export const CloseIcon=styled.button`
     padding: 11px 3px;
     width:45px;
     height:45px;
-    top:-40px;
-    right:0;
-    @media screen and (min-width:280px){
-        top:-30px;
-        right:-15px;
-    }
-    @media screen and (min-width:500px){
-        top:-25px;
-        right:-25px;
-    }
-    @media screen and (max-width:550px) and (max-height:550px){
-        position:relative;
-        align-self:flex-start;
-    }
-    @media screen and (min-width:250px) and (max-height:550px){
+    top:-25px;
+    right:-25px;
+
+    @media screen and (max-height:590px){
         position:relative;
         align-self:flex-end;
-        top:-20px;
+        top:-40px;
+    }
+    @media screen and (max-width:490px){
+        right:-0;
     }
 
 
@@ -259,12 +260,33 @@ const TabText=styled.div`
 const SettingsIcon=styled.img.attrs({
     src:settingsImage,
     alt:'Settings'
-})``;
+})`
+display:none;
+@media screen and (min-height:400px){
+        display:block;
+}
+`;
+const PairingIcon=styled.img.attrs({
+        src:pairingImage,
+        alt:'Pair'
+    })`
+    display:none;
+    @media screen and (min-height:400px){
+            display:block;
+    }
+    `;
+
 const ConnectIcon=styled.img.attrs({
     src:connectImage,
     alt:'Connect'
 })`
+display:none;
+@media screen and (min-height:400px){
+        display:block;
+}
 `;
+
+
 
 const DisconnectIcon=styled.img.attrs({
         src:disconnectImage,
@@ -274,10 +296,6 @@ const DisconnectIcon=styled.img.attrs({
 
 
 
-const PairingIcon=styled.img.attrs({
-    src:pairingImage,
-    alt:'Pair'
-})``;
 
 interface TabProps{
         widgetState:WidgetState;
@@ -453,3 +471,16 @@ export const DisConnectButton:React.FC<ButtonProps>=({mobile,label='Disconnect',
                 return null;
         }
 };
+
+
+interface WhenProps{
+        mobile:MobileData;
+}
+export const WhenConnected:React.FC<WhenProps> = ({mobile,children})=>{
+     if(mobile.isConnected){
+             return (<>{children}</>);
+     }
+     else{
+             return null;
+     }
+}

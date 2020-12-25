@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 //+//import { useHistory } from 'react-router-dom'; ////website
 
-import { useMobile, ConnectWidget,DisConnectButton} from './mobile';
+import { useMobile, ConnectWidget,DisConnectButton, WhenConnected} from './mobile';
 
 
 
@@ -41,11 +41,11 @@ export const MainPage: React.FC<Props> = ({ domain, encryption, decryption, qrCo
             <AppTitle>Mobile Encryption</AppTitle>
             <SourceLink>Source Code</SourceLink>
             <ConnectWidget mobile={mobile}/>
-            {mobile.isConnected && (
+            <WhenConnected mobile={mobile}>
                 <P>
                     You can now operate on your mobile.
                 </P>
-            )}
+            </WhenConnected>
             <DisConnectButton mobile={mobile}/>
         </Content>
         </Container>
