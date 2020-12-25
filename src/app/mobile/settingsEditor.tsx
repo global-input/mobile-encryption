@@ -146,7 +146,7 @@ const ExpandIcon =styled.div`
 
 const HelpContainer=styled.div`
  position:relative;
- top:-20px;
+ top:-32px;
  display:flex;
  flex-direction:row;
  justify-content:flex-start;
