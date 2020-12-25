@@ -65,23 +65,22 @@ export const ContentLabel: React.FC<Props> = ({ back, next }) => {
                 <Content>
                         <Title>Encrypting Content for QR Code</Title>
                         <ConnectWidget mobile={mobile}/>
-                        {mobile.isConnected &&(<>
-                                <P>You can now press <EncryptOnMobileIcon/> button on your mobile to encrypt a piece of information.
-                                </P>
-                                <Form>
+                        {mobile.isConnected &&(<P>
+                                You can now press <EncryptOnMobileIcon/> button on your mobile to encrypt a piece of information.
+                        </P>)}
+                        <Form>
+
+                                {mobile.isConnected &&(<>
+                                <ContentLabelForm content={content} label={label} onContentChanged={onContentChanged} onLabelChanged={onLabelChanged}/>
                                         <P>The mobile app sends
                                         the encrypted content generated on your mobile to this application, which displays the received content in the text box above.
                                         </P>
-                                        <ContentLabelForm content={content} label={label} onContentChanged={onContentChanged} onLabelChanged={onLabelChanged}/>
-                                </Form>
-                        </>)}
-                        <Form>
-                        <Footer>
-                                <DarkButton onClick={back}>Back</DarkButton>
-                                {mobile.isConnected && (<DarkButton onClick={onNext}>Next</DarkButton>)}
+                                </>)}
+                                <Footer>
+                                        <DarkButton onClick={back}>Back</DarkButton>
+                                        {mobile.isConnected && (<DarkButton onClick={onNext}>Next</DarkButton>)}
                                 </Footer>
                         </Form>
-
                 </Content>
 
 
