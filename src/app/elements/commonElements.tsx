@@ -2,6 +2,28 @@ import React from 'react';
 import styled from 'styled-components';
 import {WhenConnected} from '../mobile';
 
+const AppTitle=styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    font-size: 12px;
+    color: #445566;
+    font-family: Georgia, Times, Serif;
+
+
+    @media screen and (min-height:150px){
+        font-size:26px;
+    }
+
+    @media screen and (min-height:400px){
+        font-size:32px;
+        margin-bottom:10px;
+    }
+    @media print{
+        display:none;
+    }
+},`;
 
 const SourceLink=styled.a.attrs({
     href:'https://github.com/global-input/mobile-encryption',
@@ -10,13 +32,14 @@ const SourceLink=styled.a.attrs({
     color: #153E85;
     font-weight: 100;
     font-family: Georgia, Times, Serif;
-    font-size: 0.8em;
-    @media screen and (min-height:200px){
-        font-size:1em;
-        margin-bottom:10px;
+    font-size: 8px;
+    float:right;
+
+    @media screen and (min-height:150px){
+        font-size:12px;
     }
     @media screen and (min-height:400px){
-        font-size:1.5em;
+        font-size:16px;
     }
    @media print{
        display:none;
@@ -25,71 +48,81 @@ const SourceLink=styled.a.attrs({
 
 
 
-const AppTitle=styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    font-size: 1em;
-    color: #445566;
-    font-family: Georgia, Times, Serif;
-    @media screen and (min-height:200px){
-        font-size:1.5em;
-    }
 
-    @media screen and (min-height:400px){
-        font-size:2em;
-        margin-bottom:10px;
-    }
-    @media print{
-        display:none;
-    }
-},`;
 
 
 const Container =styled.div`
     display:flex;
     flex-direction:column;
-    justify-content:center;
+    justify-content:flex-start;
     align-items:center;
-    height:100vh;
+    min-height:100vh;
     width:100%;
     backgroundColor: rgb(219,240,240);
-
-
 `;
 
-const Content=styled.div`
-    width:95%;
-
+const Body=styled.div`
+    width:100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-
+    justify-content: center;
     align-items: center;
     padding:10px;
-
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+    flex:1;
+`;
+const Content=styled.div`
+    width:95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+    flex:1;
 `;
 
 
-
+const TitleSection=styled.div`
+   display:block;
+`;
 
 
 
 export  const AppContainer:React.FC=({children})=>(
     <Container>
-        <Content>
-            <AppTitle>Mobile Encryption</AppTitle>
-            <SourceLink>Source Code</SourceLink>
-            {children}
-        </Content>
+            <TitleSection>
+                <AppTitle>Mobile Encryption</AppTitle>
+                <SourceLink>Source Code</SourceLink>
+            </TitleSection>
+            <Body>
+                <Content>
+                {children}
+                </Content>
+
+            </Body>
         </Container>
 );
 
-export const Title=styled(AppTitle)`
+export const Title=styled.div`
+    font-size: 12px;
     color: #445566;
-    justify-content: flex-start;
+    align-self:flex-start;
+    font-family: Georgia, Times, Serif;
+    @media screen and (min-height:150px){
+        font-size:20px;
+    }
+    @media screen and (min-height:400px){
+        font-size:28px;
+        margin-bottom:10px;
+    }
+    @media print{
+        display:none;
+    }
 `;
 
 
