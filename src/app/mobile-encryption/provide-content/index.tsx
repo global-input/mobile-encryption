@@ -74,7 +74,7 @@ const RenderContentForm=({content,onContentChanged,cancel,onEncrypt})=>{
             <Field>
                     <TextArea id="contentToEncrypt" onChange={evt=>{
                       onContentChanged(evt.target.value);
-                    }} value={content} placeholder="Place here the content you would like to encrypt."
+                    }} value={content} placeholder="Place here the content to encrypt."
                     onFocus={()=>setExpand('contentToEncrypt')}/>
                     <Label htmlFor="contentToEncrypt">Content to Encrypt</Label>
                     <Help expandId='contentToEncrypt' expand={expand} setExpand={setExpand}>

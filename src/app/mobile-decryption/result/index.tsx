@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import * as onComputer from './mobile-ui/onComputer';
 import * as onMobile from './mobile-ui/onMobile';
 
-import {AppContainer,DarkButton,Footer, Field,TextArea, Label,CopyToClipboardButton, Title,Help} from '../../elements';
+import {AppContainer,DarkButton,Footer, Field,TextArea, Label,CopyToClipboardButton, Title, Help} from '../../elements';
 interface Props {
     domain: string;
     content: string;
@@ -39,23 +39,20 @@ export const ShowResultOnComputer: React.FC<OnComputerProps> = ({ content, conte
 
 
 const RenderContentForm=({content,restart,finish})=>{
-    const [expand,setExpand]=useState('encryptedContent');
+    const [expand,setExpand]=useState('decryptedContent');
     return ( <AppContainer>
-        <Title>Encrypted Content Received</Title>
+        <Title>Decrypted Content Received</Title>
         <Field>
-                    <TextArea id="encryptedContent"  value={content} placeholder="Empty"
-                    onFocus={()=>setExpand('encryptedContent')} readOnly={true}/>
-                    <Label htmlFor="encryptedContent">Encrypted Content</Label>
+                    <TextArea id="decryptedContent"  value={content} placeholder="Empty"
+                    onFocus={()=>setExpand('decryptedContent')} readOnly={true}/>
+                    <Label htmlFor="decryptedContent">Decrypted Content</Label>
                     <CopyToClipboardButton value={content}>Copy</CopyToClipboardButton>
-                    <Help expandId='encryptedContent' expand={expand} setExpand={setExpand}>
-                    You can now store this encrypted content into a storage you prefer with the confidence that only you can decrypt using your mobile.
-                    Note that considering you may loose your phone, you should export the encryption key used in the encryption as an encrypted QR code.
-                    Alternatively, you can use another mobile to scan the encryption key to have a backup.
-
+                    <Help expand={expand} expandId="decryptedContent"  setExpand={setExpand}>
+                        This decrypted content is received from your mobile app as it is.
                     </Help>
         </Field>
         <Footer>
-            <DarkButton onClick={restart}>Encrypt Another Content</DarkButton>
+            <DarkButton onClick={restart}>Decrypt Another Content</DarkButton>
             <DarkButton onClick={finish}>Finish</DarkButton>
         </Footer>
     </AppContainer>
