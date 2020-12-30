@@ -1,9 +1,8 @@
 import React from 'react';
 import { useMobile } from '../mobile';
-
-
-
 import {AppContainer,DarkButton,Footer, Field,TextArea, Label,CopyToClipboardButton} from '../elements';
+
+
 interface Props {
     content: string;
     finish: () => void;
@@ -14,7 +13,7 @@ interface Props {
 export const ShowOnComputer: React.FC<Props> = ({ content, contentOnComputer, showOnMobile, finish, domain }) => {
     const initData = {
         form: {
-            title: "Encryption Completed",
+            title: "Decryption Completed",
             fields: Object.values(FIELDS)
         }
     }
@@ -43,7 +42,6 @@ export const ShowOnComputer: React.FC<Props> = ({ content, contentOnComputer, sh
                 <DarkButton onClick={finish}>Finish</DarkButton>
             </Footer>
         </AppContainer>
-
     );
 
 
@@ -53,8 +51,8 @@ export const ShowOnComputer: React.FC<Props> = ({ content, contentOnComputer, sh
 const FIELDS = {
     info: {
         type: "info",
-        value: ['You can now copy the encrypted content into your clipboard on your computer (in the extension window).',
-            'You can also load the encrypted content into your mobile by pressing the "Load into Mobile" button.']
+        value: ['You can now copy the decrypted content into your clipboard on your computer (in the extension window).',
+            'You can also load the decrypted content into your mobile by pressing the "Load into Mobile" button.']
     },
     restart: {
         id: "restart",

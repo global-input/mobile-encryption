@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
-import {useMobile} from '../../mobile';
+import {useMobile} from '../mobile';
 import {AppContainer, Title,
-    Footer,DarkButton, Field,TextArea, Label,Help} from '../../elements';
+    Footer,DarkButton, Field,TextArea, Label,Help} from '../elements';
 
 interface PROPS {
     initialContent: string;

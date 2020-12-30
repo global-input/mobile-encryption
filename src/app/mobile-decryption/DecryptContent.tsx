@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { useMobile,ConnectWidget} from '../mobile';
+import { useMobile, ConnectWidget } from '../mobile';
 import {AppContainer,Error,Footer, DarkButton,Title,ConnectedInstruction} from '../elements';
-
-
 
 interface Props {
     content: string;
@@ -11,18 +9,18 @@ interface Props {
     domain: string;
 }
 
-export const EncryptContent: React.FC<Props> = ({ domain, content, contentOnComputer, showOnComputer }) => {
+export const DecryptContent: React.FC<Props> = ({ content, contentOnComputer, showOnComputer, domain }) => {
     const [errorMessage, setErrorMessage] = useState('');
-    const initData = () => ({
+    const initData = {
         form: {
-            title: "Mobile Encryption",
+            title: "Mobile Decryption",
             fields: [{ ...FIELDS.content, value: content }, FIELDS.info, FIELDS.back]
         }
-    });
+    }
     const mobile = useMobile(initData, true);
     const back = () => {
         contentOnComputer(content);
-    }
+    };
     mobile.setOnchange(({ field }) => {
         switch (field.id) {
             case FIELDS.content.id:
@@ -30,8 +28,8 @@ export const EncryptContent: React.FC<Props> = ({ domain, content, contentOnComp
                     showOnComputer(field.value as string)
                 }
                 else {
-                    setErrorMessage("Failed to encrypt!");
-                    mobile.sendValue(FIELDS.info.id, { style: { color: "red" }, content: "Failed to encrypt!" });
+                    setErrorMessage("Failed to decrypt!");
+                    mobile.sendValue(FIELDS.info.id, { style: { color: "red" }, content: "Failed to decrypt!" });
                 }
                 break;
             case FIELDS.back.id:
@@ -42,11 +40,11 @@ export const EncryptContent: React.FC<Props> = ({ domain, content, contentOnComp
     return (
         <AppContainer>
             <ConnectWidget mobile={mobile}/>
-            <Title>Encrypting Content On your Mobile</Title>
+            <Title>Decrypting Content On your Mobile</Title>
             {errorMessage && (<Error>{errorMessage}</Error>)}
             <ConnectedInstruction mobile={mobile}>
 
-            Follow the instruction on your mobile to encrypt content.
+            Follow the instruction on your mobile to decrypt content.
 
 
 
@@ -56,14 +54,13 @@ export const EncryptContent: React.FC<Props> = ({ domain, content, contentOnComp
             </Footer>
         </AppContainer>
     );
-
 };
 
 const FIELDS = {
     content: {
-        id: "encryptContent",
+        id: "decryptContent",
         label: "Content",
-        type: 'encrypt',
+        type: 'decrypt',
         value: ''
     },
     info: {

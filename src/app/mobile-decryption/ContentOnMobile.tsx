@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
-import { useMobile,ConnectWidget, WhenConnected } from '../../mobile';
+import { useMobile,ConnectWidget, WhenConnected } from '../mobile';
 import {AppContainer, Form,Title,
-    Footer,DarkButton, Field,TextArea, Label,Help} from '../../elements';
+    Footer,DarkButton, Field,TextArea, Label,Help} from '../elements';
 
 
 interface PROPS {
