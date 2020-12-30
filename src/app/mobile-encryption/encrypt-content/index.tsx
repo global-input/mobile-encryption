@@ -54,8 +54,8 @@ export const EncryptContent: React.FC<Props> = ({ domain, content, contentOnComp
                     The content is now sent to your mobile app for encryption.
                     On your mobile, you can press <ShowIcon/>
                     to inspect the content received. Then, press <EncryptIcon/> to start encrypting it.
-                    In the next screen on your mobile, you will be presented with the encypted content,
-                    you can press <ShowIcon/> to insepect the encrypted content before pressing <SendIcon/> to send it to this application.
+                    In the next screen on your mobile, you will be presented with the encrypted content,
+                    you can press <ShowIcon/> to inspect the encrypted content before pressing <SendIcon/> to send it to this application.
     </ConnectedInstruction>
 
             <Footer>
