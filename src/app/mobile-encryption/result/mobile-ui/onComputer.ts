@@ -2,21 +2,27 @@ import { useMobile } from '../../../mobile';
 export const FIELDS = {
     info: {
         type: "info",
-        value: ['You can now copy the encrypted content into your clipboard on your computer (in the extension window).',
-            'You can also load the encrypted content into your mobile by pressing the "Load into Mobile" button.']
+        value: "You can now check the connected application, which should have received the encrypted content."
     },
     restart: {
         id: "restart",
-        label: "Restart",
+        label: "Encrypt Again",
         type: "button",
         viewId: "row1"
     },
-    showOnMobile: {
-        id: "showOnMobile",
-        label: "Load into Mobile",
+    contentOnMobile: {
+        id: "contentOnMobile",
         type: "button",
-        viewId: "row1"
+        label: "Press here to load the encrypted content into your mobile app",
+        viewId: "row2",
+        style:{
+            maxWidth:200,
+            padding:20,
+            backgroundColor:'#EEEEEE'
+        },
+
     },
+
     finish: {
         id: "finish",
         label: "Finish",
@@ -27,18 +33,15 @@ export const FIELDS = {
 
 const initData = {
     form: {
-        title: "Encryption Completed",
+        title: "Encrypted Content Has been sent",
         views: {
             viewIds: {
                 info: {
                     style: {
-
                         marginBottom:20,
                         display:'flex',
                         flexDirection:'column',
                         justifyContent:'center'
-
-
                     }
                 },
                 row1:{
@@ -67,7 +70,7 @@ export const useConnectMobile = ({restart,onShowOnMobile,finish}) =>{
             case FIELDS.restart.id:
                 restart();
                 break;
-            case FIELDS.showOnMobile.id:
+            case FIELDS.contentOnMobile.id:
                 onShowOnMobile();
                 break;
             case FIELDS.finish.id:

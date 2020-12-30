@@ -2,7 +2,7 @@ import { useMobile } from '../../../mobile';
 export const FIELDS = {
     info: {
         type: "info",
-        value: 'You can now copy the encrypted content into your clipboard.'
+        value: 'Select the field to copy it into your clipboard.'
     },
     content: {
         id: "encryptedContent",
@@ -11,15 +11,10 @@ export const FIELDS = {
         nLines: 5,
         value: ''
     },
-    showOnComputer: {
-        id: "showOnComputer",
-        label: "Back",
-        type: "button",
-        viewId: "row1"
-    },
+
     restart: {
         id: "restart",
-        label: "Restart",
+        label: "Encrypt Again",
         type: "button",
         viewId: "row1"
     },
@@ -44,19 +39,16 @@ const initData = (content) => ({
                 }
                                 }
         },
-        fields: [FIELDS.info, { ...FIELDS.content, value: content }, FIELDS.showOnComputer, FIELDS.restart, FIELDS.finish]
+        fields: [FIELDS.info, { ...FIELDS.content, value: content },  FIELDS.restart, FIELDS.finish]
     }
 });
 
-export const useConnectMobile = ({content,restart,onShowComputer,finish}) =>{
+export const useConnectMobile = ({content,restart,finish}) =>{
     const mobile = useMobile(()=>initData(content), true);
     mobile.setOnchange(({ field }) => {
         switch (field.id) {
             case FIELDS.restart.id:
                 restart();
-                break;
-            case FIELDS.showOnComputer.id:
-                onShowComputer();
                 break;
             case FIELDS.finish.id:
                 finish();

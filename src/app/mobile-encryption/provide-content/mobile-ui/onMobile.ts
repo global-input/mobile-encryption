@@ -1,28 +1,23 @@
 import { useMobile } from '../../../mobile';
 export const FIELDS = {
-    info: {
-        id: "info",
-        type: "info",
-        value: ''
-    },
     content: {
         id: "contentOnMobile",
         type: 'text',
         nLines: 5,
         value: '',
+        viewId: "row2",
     },
-    back: {
-        id: 'backToComposeOnComputer',
-        type: 'button',
-        label: 'Back',
-        viewId: "row1",
-        icon:'back'
+    info: {
+        id: "info",
+        type: "info",
+        viewId: "row2",
+        value: 'You can now also use your mobile to enter content (via the text box above) on the connected application.'
     },
     cancel: {
         id: 'cancel',
         type: 'button',
         label: 'Cancel',
-        viewId: "row1",
+        viewId: "row3",
         icon:'cancel'
     },
 
@@ -30,7 +25,7 @@ export const FIELDS = {
         id: "toEncrypt",
         type: "button",
         label: "Encrypt",
-        viewId: "row1",
+        viewId: "row3",
         icon:'encrypt'
     }
 }
@@ -39,7 +34,7 @@ const initData = (initialContent) => ({
         title: "Content To Encrypt",
         views: {
             viewIds: {
-                row1:{
+                row3:{
                     style:{
                         display:'flex',
                         justifyContent:'space-between',
@@ -48,17 +43,14 @@ const initData = (initialContent) => ({
                 }
                                 }
         },
-        fields: [{ ...FIELDS.content, value: initialContent }, FIELDS.info,FIELDS.back, FIELDS.cancel, FIELDS.encrypt]
+        fields: [{ ...FIELDS.content, value: initialContent }, FIELDS.info, FIELDS.cancel, FIELDS.encrypt]
     }
 });
 
-export const useConnectMobile = ({initialContent,cancel,back,setContent,onEncrypt}) =>{
+export const useConnectMobile = ({initialContent,cancel,setContent,onEncrypt}) =>{
     const mobile = useMobile(()=>initData(initialContent), true);
     mobile.setOnchange(({ field }) => {
         switch (field.id) {
-            case FIELDS.back.id:
-                back();
-                break;
             case FIELDS.content.id:
                 setContent(field.value as string);
                 break;

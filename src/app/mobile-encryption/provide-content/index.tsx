@@ -10,11 +10,26 @@ interface PROPS{
     cancel: () => void;
     domain: string;
 }
+
+export const ContentOnMobile: React.FC<PROPS> = ({ initialContent, cancel, startEncrypt, domain }) => {
+    const [content, setContent] = useState<string>(initialContent);
+
+    const onEncrypt = () => {
+        processEncrypt(mobile,content,startEncrypt,onMobile.FIELDS.info.id);
+    };
+    const mobile = onMobile.useConnectMobile({initialContent,cancel,setContent,onEncrypt});
+    const { sendValue } = mobile;
+    const onContentChanged = useCallback((value: string) => {
+        setContent(value);
+        sendValue(onMobile.FIELDS.content.id, value);
+    }, [sendValue]);
+    return (
+        <RenderContentForm content={content} onContentChanged={onContentChanged} cancel={cancel} onEncrypt={onEncrypt}/>
+    );
+};
+
 interface PROPSForOnComputer extends PROPS{
     contentOnMobile: (content: string) => void;
-}
-interface PROPSForOnMobile extends PROPS{
-    contentOnComputer: (content: string) => void;
 }
 
 
@@ -34,27 +49,7 @@ export const ContentOnComputer: React.FC<PROPSForOnComputer> = ({ initialContent
         <RenderContentForm content={content} onContentChanged={onContentChanged} cancel={cancel} onEncrypt={onEncrypt}/>
         );
 };
-export const ContentOnMobile: React.FC<PROPSForOnMobile> = ({ initialContent, contentOnComputer, cancel, startEncrypt, domain }) => {
-    const [content, setContent] = useState<string>(initialContent);
 
-    const onEncrypt = () => {
-        processEncrypt(mobile,content,startEncrypt,onMobile.FIELDS.info.id);
-    };
-
-    const back = () => {
-        contentOnComputer(content);
-    }
-    const mobile = onMobile.useConnectMobile({initialContent,cancel,back,setContent,onEncrypt});
-    const { sendValue } = mobile;
-    const onContentChanged = useCallback((value: string) => {
-        setContent(value);
-        sendValue(onMobile.FIELDS.content.id, value);
-    }, [sendValue]);
-    return (
-        <RenderContentForm content={content} onContentChanged={onContentChanged} cancel={cancel} onEncrypt={onEncrypt}/>
-    );
-
-};
 
 
 

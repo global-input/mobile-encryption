@@ -3,18 +3,31 @@ import * as onComputer from './mobile-ui/onComputer';
 import * as onMobile from './mobile-ui/onMobile';
 
 import {AppContainer,DarkButton,Footer, Field,TextArea, Label,CopyToClipboardButton, Title,Help} from '../../elements';
-interface BaseProps {
-    content: string;
-    finish: () => void;
-    contentOnComputer: (content: string) => void;
+interface Props {
     domain: string;
+    content: string;
+    contentOnComputer:(content:string)=>void;
+    finish: () => void;
+
+
 }
-interface ShowOnComputerProps extends BaseProps{
+export const ShowResultOnMobile: React.FC<Props> = ({ content, contentOnComputer, finish, domain }) => {
+    const restart = () => contentOnComputer('');
+
+     onMobile.useConnectMobile({content,restart,finish});
+        return (
+            <RenderContentForm content={content} restart={restart} finish={finish}/>
+        );
+};
+
+
+interface OnComputerProps extends Props{
     showOnMobile: (content: string) => void;
 }
 
 
-export const ShowOnComputer: React.FC<ShowOnComputerProps> = ({ content, contentOnComputer, showOnMobile, finish, domain }) => {
+
+export const ShowResultOnComputer: React.FC<OnComputerProps> = ({ content, contentOnComputer, showOnMobile, finish, domain }) => {
     const restart = () => contentOnComputer('');
     const onShowOnMobile=()=>showOnMobile(content);
     onComputer.useConnectMobile({restart,onShowOnMobile,finish});
@@ -22,14 +35,6 @@ export const ShowOnComputer: React.FC<ShowOnComputerProps> = ({ content, content
         <RenderContentForm content={content} restart={restart} finish={finish}/>
     );
 
-};
-export const ShowOnMobile: React.FC<ShowOnMobileProps> = ({ content, contentOnComputer, showOnComputer, finish, domain }) => {
-    const restart = () => contentOnComputer('');
-    const onShowComputer=()=>showOnComputer(content);
-     onMobile.useConnectMobile({content,restart,onShowComputer,finish});
-        return (
-            <RenderContentForm content={content} restart={restart} finish={finish}/>
-        );
 };
 
 
@@ -45,7 +50,7 @@ const RenderContentForm=({content,restart,finish})=>{
                     <Help expandId='encryptedContent' expand={expand} setExpand={setExpand}>
                     You can now store this encrypted content into a storage you prefer with the confidence that only you can decrypt using your mobile.
                     Note that considering you may loose your phone, you should export the encryption key used in the encryption as an encrypted QR code.
-                    Alternatively, you can use another mobile to scan the encryption key to import it into your backup mobile.
+                    Alternatively, you can use another mobile to scan the encryption key to have a backup.
 
                     </Help>
         </Field>
@@ -57,8 +62,3 @@ const RenderContentForm=({content,restart,finish})=>{
 )
 
 };
-
-
-interface ShowOnMobileProps extends BaseProps {
-    showOnComputer: (content: string) => void;
-}

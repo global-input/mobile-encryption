@@ -3,7 +3,7 @@ export const FIELDS = {
     info: {
         id: "info",
         type: 'info',
-        value: ['Waiting for content from the application.'],
+        value: ['Waiting for content from the connected application.'],
         viewId:'info'
     },
     cancel: {
@@ -16,10 +16,10 @@ export const FIELDS = {
     contentOnMobile: {
         id: "contentOnMobile",
         type: "button",
-        label: "Press here if you would like to use your mobile to input content",
+        label: "Press here to use your mobile to input content",
         viewId: "row2",
         style:{
-            maxWidth:180,
+            maxWidth:200,
             padding:20,
             backgroundColor:'#EEEEEE'
         },
