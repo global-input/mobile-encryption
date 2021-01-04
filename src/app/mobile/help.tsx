@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
+
+
 
 const ExpandIcon =styled.div`
     box-sizing: border-box;
@@ -31,38 +33,18 @@ const ExpandIcon =styled.div`
         left: 5px;
         top: 6px;
     }
-    position:relative;
-    top:-18px;
 
 `;
 
-const HelpContainer1=styled.div`
+const HelpContainer=styled.div`
+ position:relative;
+ top:-20px;
  display:flex;
- flex-direction:column;
+ flex-direction:row;
  justify-content:flex-start;
  align-items:flex-start;
+ flex-wrap:wrap;
 `;
-const HelpContainer2=styled(HelpContainer1)`
-    position:relative;
-    top:-25px;
-    padding-right:100px;
-`;
-const HelpContainer3=styled(HelpContainer1)`
-    position:relative;
-    top:-12px;
-`;
-const HelpContainer=({position=1,children})=>{
-    if(position===2){
-        return (<HelpContainer2>{children}</HelpContainer2>)
-    }
-    else if(position===3){
-        return (<HelpContainer3>{children}</HelpContainer3>)
-    }
-    else{
-        return (<HelpContainer1>{children}</HelpContainer1>)
-    }
-}
-
 const HelpContent=styled.div`
 font-family: Avenir;
     color: rgb(53,116,230);
@@ -72,22 +54,19 @@ font-family: Avenir;
     @media only screen and (min-width:500px){
         font-size: 14px;
     }
-    position:relative;
-    top:-35px;
-    left:30px;
-
-
 
 `;
-export const Help=({children,expandId, expand,setExpand, position=1})=>{
+
+
+export const Help=({children,expandId, expand,setExpand})=>{
     const isExpanded=expand===expandId;
     const toggle=()=>setExpand(isExpanded?'':expandId);
     return (
-    <HelpContainer position={position}>
+    <HelpContainer>
             <ExpandIcon expand={isExpanded} onClick={toggle}/>
             <HelpContent expand={isExpanded}>
                 {children}
             </HelpContent>
     </HelpContainer>
     );
-};
+}
