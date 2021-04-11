@@ -4,6 +4,7 @@ import React from 'react';
 
 import { useMobile, ConnectWidget,DisConnectButton} from './mobile';
 import {AppContainer,ConnectedInstruction,TipsOnButton} from './components';
+import { ImportFormData } from './import-form-data';
 
 
 //+//import * as mobileUI from '../../micro-apps/mobile-ui'; ////website
@@ -12,10 +13,12 @@ interface Props {
     encryption: () => void;
     decryption: () => void;
     qrCodeGenerator: () => void;
+    exportFormData:()=>void;
+    importFormData:()=>void;
 }
 
 
-export const MainPage: React.FC<Props> = ({ domain, encryption, decryption, qrCodeGenerator }) => {
+export const MainPage: React.FC<Props> = ({ domain, encryption, decryption, qrCodeGenerator,exportFormData,importFormData }) => {
     //+//const history = useHistory();////website
     const mobile = useMobile(initData, true);
     mobile.setOnchange(({ field }) => {
@@ -28,6 +31,12 @@ export const MainPage: React.FC<Props> = ({ domain, encryption, decryption, qrCo
                 break;
             case FIELDS.qrCodeGenerator.id:
                 qrCodeGenerator();
+                break;
+            case FIELDS.exportFormData.id:
+                exportFormData();
+                break;
+            case FIELDS.importFormData.id:
+                importFormData();
                 break;
             default:
             //+//mobileUI.onFieldChange(field, history); ////website
@@ -69,6 +78,20 @@ const FIELDS = {
         icon: "decrypt",
         label: 'Decryption',
         viewId: "row2"
+    },
+    exportFormData:{
+        id: 'export-form-data',
+        type: 'button',
+        icon: "export",
+        label: 'Export Form Data',
+        viewId: "row3"
+    },
+    importFormData:{
+        id: 'import-form-data',
+        type: 'button',
+        icon: "import",
+        label: 'Import Form Data',
+        viewId: "row3"
     }
 };
 //+//mobileUI.add(FIELDS);////website
@@ -86,6 +109,14 @@ const initData = {
                     }
                 },
                 row2:{
+                    style:{
+                        display:'flex',
+                        justifyContent:'space-between',
+                        padding:20,
+                        width:'100%',
+                    }
+                },
+                row3:{
                     style:{
                         display:'flex',
                         justifyContent:'space-between',

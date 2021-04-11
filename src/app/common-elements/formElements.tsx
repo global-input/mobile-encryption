@@ -166,6 +166,7 @@ export const Footer = styled.div`
         justify-content: space-between;
         width: 100%;
         align-items: center;
+        margin-top:20px;
         padding-bottom:50px;
         @media print {
             display:none;

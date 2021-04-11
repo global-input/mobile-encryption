@@ -93,15 +93,17 @@ export const AppTitleSection=styled.div`
 
 
 export const Title=styled.div`
-    font-size: 12px;
+    font-size: 16px;
     color: #445566;
     align-self:flex-start;
+    font-weight:600;
     font-family: Georgia, Times, Serif;
+    margin-bottom:20px;
     @media screen and (min-height:150px){
-        font-size:16px;
+        font-size:20px;
     }
     @media screen and (min-height:400px){
-        font-size:20px;
+        font-size:26px;
         margin-bottom:10px;
     }
     @media print{
@@ -155,7 +157,9 @@ export const Instruction=styled.div<InstructionProps>`
     }
 
 `;
-
+export const P = styled.div`
+font-size: 12px;
+`;
 
 
 interface ConnectedInstructionProps{

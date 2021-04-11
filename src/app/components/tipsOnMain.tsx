@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Tips, TipTitle, Tip, TipContent} from '../common-elements';
-import {GenerateQRCodeImage,EncryptImage,DecryptImage} from './icons';
+import {GenerateQRCodeImage,EncryptImage,DecryptImage,ExportIcon} from './icons';
 
 
 export const TipsOnButton = () => (
@@ -12,22 +12,32 @@ export const TipsOnButton = () => (
         <Tip>
             <GenerateQRCodeImage />
             <TipContent>
-                This button allows you to encrypt a short content using your mobile and then send the encrypted content to this application to create an Encrypt QR Code that only your mobile can scan to decrypt.
+                Encrypting a short content on your mobile and send it to this application to create an Encrypt QR Code. Only your mobile can scan and decrypt it.
             </TipContent>
         </Tip>
 
         <Tip>
             <EncryptImage />
             <TipContent>
-                This button allows you to encrypt content and send the encrypted content to this application so you can store it anywhere with a peace of mind that only your mobile can decrypt it.
+                Asking your mobile app to encrypt a piece of content. The encrypted content received by this application 
+                can only be decrypted by your mobile.
                                                 </TipContent>
         </Tip>
         <Tip>
             <DecryptImage />
             <TipContent>
-                This button allow you use this application to sends an encrypted content to your mobile app for decryption.
-                Your mobile app decrypts it and sends back the result to this application.
+                Asking your mobile app to decrypt a piece of content. 
             </TipContent>
         </Tip>
+        <Tip>
+            <ExportIcon />
+            <TipContent>
+                Exporting all the form data in your mobile app for backup purposes.                 
+                The exported data only be decrypted when it is imported back into your mobile app.
+            </TipContent>
+        </Tip>
+
+
+        
     </Tips>
 );
