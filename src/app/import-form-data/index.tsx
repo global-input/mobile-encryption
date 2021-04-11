@@ -20,12 +20,11 @@ export const ImportFormData: React.FC<Props> = ({ domain, back }) => {
         setContent(content);
         setPage(PAGES.START_IMPORT);
     }, []);
-    
 
     switch (page) {
         case PAGES.CONTENT_TO_IMPORT:
             return (<ProvideContent domain={domain} cancel={back} startImport={startImport} />);
-        case PAGES.CONTENT_TO_IMPORT:
+        case PAGES.START_IMPORT:
             return (<StartImport domain={domain} cancel={back} content={content} finish={back}/>);
         
 

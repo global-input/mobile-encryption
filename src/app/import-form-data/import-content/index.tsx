@@ -6,9 +6,10 @@ import {AppContainer,Error,Footer, DarkButton,Title,ConnectedInstruction,Decrypt
 
     const FIELDS = {
         content: {
-            id: "decryptContent",
+            id: "contentToImport",
             label: "Content",
-            type: 'decrypt',
+            type: 'import-form',
+            nLines:5,
             value: ''
         },
         info: {
@@ -23,13 +24,14 @@ import {AppContainer,Error,Footer, DarkButton,Title,ConnectedInstruction,Decrypt
             viewId: "row1"
         }
     };
-const initData = {
+const initData =(content:string) => {
+    return {
         form: {
             title: "Import Form Data",
-            fields: Object.values(FIELDS)
+            fields: [{...FIELDS.content, value:content}, FIELDS.info, FIELDS.back]
         }
     };
-    
+}
 interface Props {
     content: string;    
     domain: string;
@@ -40,7 +42,9 @@ interface Props {
 export const StartImport: React.FC<Props> = ({ cancel,domain, content, finish }) => {
     const [errorMessage, setErrorMessage] = useState('');
     
-    const mobile = useMobile(initData, true);
+    
+    
+    const mobile = useMobile(()=>initData(content), true);
     
     mobile.setOnchange(({ field }) => {
         switch (field.id) {            
