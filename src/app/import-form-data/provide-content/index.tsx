@@ -86,15 +86,15 @@ export const ProvideContent: React.FC<PROPS> = ({startImport, cancel, domain }) 
 
     const mobile = useConnectMobile({cancel});    
         return (<AppContainer>
-            <Title>Importing Form Content</Title>
+            <Title> Encrypted Form Data</Title>
             <Field>
                     <TextArea id="contentToImport" onChange={evt=>{
                       setContent(evt.target.value);
                     }} value={content} placeholder="Paste the content here."
                     onFocus={()=>setExpand('contentToImport')}/>
-                    <Label htmlFor="contentToImport">Content to Decrypt</Label>
+                    <Label htmlFor="contentToImport">Encrypted Form Data</Label>
                     <Help expandId='contentToImport' expand={expand} setExpand={setExpand}>
-                    Please provide the encrypted form content that you like to send your mobile app.                    
+                    Please provide the encrypted form data that you have exported from your mobile app.                    
                     </Help>
             </Field>
             <Footer>

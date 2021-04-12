@@ -64,7 +64,7 @@ export const ExportingContent: React.FC<Props> = ({ domain,onExported, back }) =
             <Title>Exporting Form Data</Title>
             {errorMessage && (<Error>{errorMessage}</Error>)}
             <ConnectedInstruction mobile={mobile}>
-                Please press <ExportIcon/> on your mobile to export the form data from your mobile app to this application.
+                Press <ExportIcon/> on your mobile to export the form data on your mobile app to this application.
                 
     </ConnectedInstruction>
 

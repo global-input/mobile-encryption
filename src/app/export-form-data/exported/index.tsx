@@ -77,11 +77,11 @@ export const ContentExported: React.FC<Props> = ({ content, finish, domain }) =>
                     <TextArea id="exportedContent"  value={content} placeholder="Empty"
                     onFocus={()=>setExpand('exportedContent')} readOnly={true}/>
 
-                    <Label htmlFor="encryptedContent">Exported Content</Label>
+                    <Label htmlFor="exportedContent">Exported Content</Label>
                     <CopyToClipboardButton value={content}>Copy</CopyToClipboardButton>
                     <Help expandId='exportedContent' expand={expand} setExpand={setExpand} position={2}>
                     You can now store this encrypted content into a storage you prefer with the confidence that only you can decrypt using your mobile.
-                    Note that considering you may loose your phone, you should export the encryption key used in the encryption as an encrypted QR code.
+                    Note that you should separately export the encryption key used in the encryption as an encrypted QR code considering the possibility you may loose your phone.
                     Alternatively, you can use another mobile to scan the encryption key to have a backup.
                     </Help>
 

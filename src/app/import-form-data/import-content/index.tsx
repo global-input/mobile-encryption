@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useMobile,ConnectWidget} from '../../mobile';
-import {AppContainer,Error,Footer, DarkButton,Title,ConnectedInstruction,DecryptIcon,
-    ShowIcon,SendIcon} from '../../components';
+import {AppContainer,Error,Footer, DarkButton,Title,ConnectedInstruction} from '../../components';
 
     const FIELDS = {
         content: {
@@ -59,11 +58,7 @@ export const StartImport: React.FC<Props> = ({ cancel,domain, content, finish })
             <Title>Importing Content</Title>
             {errorMessage && (<Error>{errorMessage}</Error>)}
             <ConnectedInstruction mobile={mobile}>
-                    The content is now sent to your mobile app for decryption.
-                    On your mobile, you can press <ShowIcon/>
-                    to inspect the content received. Then, press <DecryptIcon/> to start decrypting it.
-                    In the next screen on your mobile, you will be presented with the decrypted content,
-                    you can press <ShowIcon/> to inspect the decrypted content before pressing <SendIcon/> to send it to this application.
+                    The content is now sent to your mobile app. You can now decrypt and import the data on your mobile app.                    
     </ConnectedInstruction>
 
             <Footer>
