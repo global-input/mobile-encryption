@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Tips, TipTitle, Tip, TipContent} from '../common-elements';
-import {GenerateQRCodeImage,EncryptImage,DecryptImage,ExportIcon} from './icons';
+import {GenerateQRCodeImage,EncryptImage,DecryptImage,ExportIcon,ImportIcon} from './icons';
 
 
 export const TipsOnButton = () => (
@@ -34,6 +34,12 @@ export const TipsOnButton = () => (
             <TipContent>
                 Exporting all the form data in your mobile app for backup purposes.                 
                 The exported data only be decrypted when it is imported back into your mobile app.
+            </TipContent>
+        </Tip>
+        <Tip>
+            <ImportIcon />
+            <TipContent>
+                Importing the form data that you have exported previously back into your mobile app.                                 
             </TipContent>
         </Tip>
 

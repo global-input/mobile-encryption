@@ -6,6 +6,7 @@ import qrCodeImage from './images/qr-code.png';
 import encryptImage from './images/encrypt.png';
 import decryptImage from './images/decrypt.png';
 import exportImage from './images/export-icon.png';
+import importImage from './images/import-icon.png';
 
 
 export const DecryptIcon = styled.img.attrs({
@@ -40,4 +41,10 @@ export const ExportIcon = styled.img.attrs({
     src: exportImage,
     alt: 'Export'
 })``;
+
+export const ImportIcon = styled.img.attrs({
+    src: importImage,
+    alt: 'Import'
+})``;
+
 

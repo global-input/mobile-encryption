@@ -16,7 +16,7 @@ const FIELDS = {
         id: "info",
         type: "info",
         value: {
-            content:['The application is requesting all the form data stored in your mobile app. The data will be exported in its encrypted form. Therefore, the application will not be able to decrypt it and can only store it for backup purposes. The data can only be decrypted when they are imported back into this mobile app. ',
+            content:['The application is requesting all the form data stored in your mobile app. The data will be exported in its encrypted form, and the application can only store it for backup purposes and will not be able to decrypt them. The data can only be decrypted when they are imported back into this mobile app. ',
             'Press the "Export" button at the bottom of the screen to export.' ]
         },
     },

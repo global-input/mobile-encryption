@@ -26,7 +26,7 @@ import {AppContainer,Error,Footer, DarkButton,Title,ConnectedInstruction} from '
 const initData =(content:string) => {
     return {
         form: {
-            title: "Import Form Data",
+            title: "Completed",
             fields: [{...FIELDS.content, value:content}, FIELDS.info, FIELDS.back]
         }
     };
