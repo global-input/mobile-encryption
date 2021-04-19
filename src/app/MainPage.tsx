@@ -83,14 +83,14 @@ const FIELDS = {
         id: 'export-form-data',
         type: 'button',
         icon: "export",
-        label: 'Export Form Data',
+        label: 'Export',
         viewId: "row3"
     },
     importFormData:{
         id: 'import-form-data',
         type: 'button',
         icon: "import",
-        label: 'Import Form Data',
+        label: 'Import',
         viewId: "row3"
     }
 };
